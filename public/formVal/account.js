@@ -31,7 +31,7 @@ let validateUser = (min, max, inputField, errorname) => {
 
 }
 
-let validateRole = (role, errorrole) => {
+let validateRole = (errorrole) => {
     let role = document.getElementById('role')
     if (role.value == 'default') {
         errorrole.innerHTML = 'User role is required';
