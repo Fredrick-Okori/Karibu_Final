@@ -1,0 +1,144 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(content='width=device-width, initial-scale=1.0', name='viewport')
+    title Credit | Karibu Grocery Limited
+    meta(content='', name='description')
+    meta(content='', name='keywords')
+    // Favicon
+    link(href='/images/favicon-32x32.png', rel='icon')
+    // Google Fonts
+
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i', rel='stylesheet')
+    
+    // Vendor CSS Files
+    link(href='/animate.css/animate.min.css', rel='stylesheet')
+    link(href='/aos/aos.css', rel='stylesheet')
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    link(href='/bootstrap-icons/bootstrap-icons.css', rel='stylesheet')
+    link(href='/boxicons/css/boxicons.min.css', rel='stylesheet')
+    link(href='/glightbox/css/glightbox.min.css', rel='stylesheet')
+    link(href='/remixicon/remixicon.css', rel='stylesheet')
+    link(href='/swiper/swiper-bundle.min.css', rel='stylesheet')
+
+    // Main CSS File
+    link(href='/css/login.css', rel='stylesheet')
+    link(href='/css/style.css', rel='stylesheet')
+  body
+
+    // ======= Header =======
+    header#header.fixed-top.d-flex.align-items-center
+      .container.d-flex.align-items-center.justify-content-between
+        .logo
+          a(href='index.html')
+            img(src='/images/logo.png')
+
+          
+        h2.companyname
+          | Karibu Grocery Limited
+          strong  | Credit Portal 
+        nav#navbar.navbar
+          ul
+            
+            li
+              a.nav-link(href='/procurement') Products
+            li
+              a.nav-link(href='/sell') Sales
+            li
+              a.nav-link(href='/credit') Credit
+            li
+              a.nav-link(href='/logout') Logout
+            i.bi.bi-list.mobile-nav-toggle
+        // .navbar
+    // End Header
+    main#main
+      // ======= Breadcrumbs =======
+    
+        .container
+      hr
+      hr
+      hr
+      hr
+      hr     
+      .container
+        .col-lg-8         
+          form(action='/credit' method='POST')
+            .row 
+              .col 
+                h3.loginheader Enter credit details below and click save
+            .row              
+              .col-lg-6
+                input(type='text', name='buyername', placeholder='Name of Buyer', onblur='buyerNameVal(3, this, errorbuyer)')
+                span#errorbuyer
+              .col.lg-6 
+                input(type='text', name='nin', placeholder='NIN Number', onblur='ninNumVal(15, this, ninerror)')
+                span#ninerror
+            .row 
+              .col-lg-6 
+                input(type='text', name='contact', placeholder='Contact', onblur='contactVal(10, this, contacterror)')
+                span#contacterror
+              .col-lg-6 
+                input(type='text', name='location', placeholder='Location', onblur='locationVal(3, this, locationerror)')
+                span#locationerror
+            .row             
+              .col-lg-6
+                select(id='producename' required name='producetype')
+                  option(value='default', name='default') Produce Type
+                  option(value='beans', name='beans') Beans 
+                  option(value='Grain Maize', name='maize') Maize 
+                  option(value='Cow peas', name='peas') Cow Peas 
+                  option(value='G-nuts', name='nuts') G-nuts 
+                  option(value='Soya', name='Soyabeans') Soybeans
+                  span#produceerror
+              .col-lg-6
+                input(type='number', id='tonnage' name='tonnage', placeholder='Tonnage in Kgs', onblur='tonnageVal(3, this, tonnageerror)', onchange='dueAmount()')
+                span#tonnageerror
+            .row                           
+              
+              .col-lg-6
+                input(type='number', id='rate' name='rate', placeholder='Unit Price', onblur='rateVal(4, this, rateerror)', onchange='dueAmount()')
+                span#rateerror
+              .col-lg-6
+                input(type='number', id='dueamount' name='dues', placeholder='Amount Due', dueAmount())
+            .row
+              .col-lg-6
+               input(type='date', name='duedate', placeholder='Due Date' required)
+              
+              .col-lg-6
+               input(type='datetime-local', name='dispatchdate', placeholder='Dispatch Date' required)
+            .row 
+              .col-lg-6
+                input(type='text', name='agent', placeholder='Agent Name' onblur='agentVal(3, this, agenterror)')
+                span#agenterror
+              .col-lg-6
+                button(type='submit') SAVE
+
+
+    footer#footer
+      .container
+        h3(style='color:#80C41C') Karibu Grocery Limited
+        .copyright
+          | &copy; Copyright 
+          strong
+            span Karibu Grocery Limited
+          | . All Rights Reserved. Designed by 
+          a(href='#') Fredrick Okori
+    // End Footer
+    
+    a.back-to-top.d-flex.align-items-center.justify-content-center(href='#')
+      i.bi.bi-arrow-up-short
+      // ======= Footer =======
+      a.back-to-top.d-flex.align-items-center.justify-content-center(href='#')
+        i.bi.bi-arrow-up-short
+      // Vendor JS Files
+      script(src='/aos/aos.js')
+      script(src='/bootstrap/js/bootstrap.bundle.min.js')
+      script(src='/glightbox/js/glightbox.min.js')
+      script(src='/isotope-layout/isotope.pkgd.min.js')
+      script(src='/swiper/swiper-bundle.min.js')
+      script(src='/php-email-form/validate.js')
+
+      // Template Main JS File
+      script(src='/js/main.js')
+      script(src='/formVal/creditVal.js')

@@ -1,0 +1,69 @@
+extends layout
+block content
+    body.collections
+            hr
+            header#header.fixed-top.d-flex.align-items-center
+                .container.d-flex.align-items-center.justify-content-between
+                    .logo
+                        a(href='index.html')
+                        img(src='/images/logo.png')
+                    
+                    h2.companyname
+                        | Karibu Grocery Limited 
+
+                        strong | Sales Report
+                    nav#navbar.navbar
+                        ul
+                        
+                        li
+                            a.nav-link(href='/register') Back
+                        li
+                            a.nav-link(href='/logout') Logout
+                        i.bi.bi-list.mobile-nav-toggle
+                    // .navbar
+            hr
+            hr
+            hr
+            hr
+            h3.loginheader 
+                span
+                    strong Sales Total:
+                        |  #{total.totalSales} UGX
+               
+            
+            table.table.table-washers 
+                thead
+                    tr
+                        
+                        th Produce
+                        th Tonnage(kgs)
+                        th Rate 
+                        th Selling Price
+                        th Client
+                        th Date of Dispatch 
+                        th Sales Agent 
+                        th Edit 
+                        th Delete
+                        
+                    
+                tbody
+                    if sales.length 
+                    each sale in sales 
+                        tr 
+                            td #{sale.producetype}
+                            td #{sale.tonnage}
+                            td #{sale.rate}
+                            td #{sale.sellingprice}
+                            td #{sale.buyername}
+                            td #{sale.date}
+                            td #{sale.creditor}
+                            
+                           
+                            td 
+                                form.edit(method="post" action='/salereport/edit')
+                                    input(type="hidden", placeholder="", name="id", value=sale._id)
+                                    a.btn.btn-success.btn-block(href='/salereport/edit'+sale._id) Edit
+                            td 
+                                form.delete(method="post" action='/salereport/delete')
+                                    input(type="hidden", placeholder="", name="id", value=sale._id)
+                                    button.button2(type="submit") Delete

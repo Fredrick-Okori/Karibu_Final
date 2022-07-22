@@ -1,0 +1,73 @@
+extends layout
+block content
+    body.collections
+            hr
+            header#header.fixed-top.d-flex.align-items-center
+                .container.d-flex.align-items-center.justify-content-between
+                    .logo
+                        a(href='index.html')
+                        img(src='/images/logo.png')
+                    
+                    h2.companyname
+                        | Karibu Grocery Limited
+                        strong  | Credit Report
+                    nav#navbar.navbar
+                        ul
+                        
+                        li
+                            a.nav-link(href='/register') Back
+                        li
+                            a.nav-link(href='/logout') Logout
+                        i.bi.bi-list.mobile-nav-toggle
+                    // .navbar
+            hr
+            hr
+            hr
+            hr
+            h3.loginheader 
+          
+                span Total Credit:
+                 strong | #{total.totalCredit} UGX
+              
+            table.table.table-washers 
+                thead
+                    tr
+                        th Client
+                        th NIN
+                        th Contact
+                        th Location 
+                        th Produce
+                        th Kgs
+                        th Rate 
+                        th Due Amount 
+                        th Due date 
+                        th Dispatch Date 
+                        th Agent
+                        th Edit 
+                        th Delete
+                        
+                    
+                tbody
+                    if credits.length 
+                    each credit in credits 
+                        tr 
+                            td #{credit.buyername}
+                            td #{credit.nin}
+                            td #{credit.contact}
+                            td #{credit.location}
+                            td #{credit.producetype}
+                            td #{credit.tonnage}
+                            td #{credit.rate}
+                            td #{credit.dues}
+                            td #{credit.duedate}
+                            td #{credit.dispatchdate}
+                            td #{credit.agent}
+                           
+                            td 
+                                form.edit(method="post" action='/creditreport/edit')
+                                    input(type="hidden", placeholder="", name="id", value=credit._id)
+                                    a.btn.btn-success.btn-block(href='/creditreport/edit'+credit._id) Edit
+                            td 
+                                form.delete(method="post" action='/creditreport/delete')
+                                    input(type="hidden", placeholder="", name="id", value=credit._id)
+                                    button.button2(type="submit") Delete

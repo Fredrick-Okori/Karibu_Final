@@ -1,0 +1,42 @@
+extends layout
+block content
+    body.collections
+         hr
+         h2.usersheader Procurement collection.
+         table.table.table-washers 
+            thead
+                tr
+                    th Produce Name
+                    th Produce Type
+                    th Date
+                    th Tonnage 
+                    th Buying Price 
+                    th Dealers Name 
+                    th Branch 
+                    th Contact 
+                    th Selling Price
+                    th Delete
+                    th Edit           
+            tbody
+                    if products.length 
+                    each product in products
+           
+                        tr 
+                            td #{product.producename}                
+                            td #{product.producetype}
+                            td #{product.datetime}
+                            td #{product.tonnage}
+                            td #{product.cost}
+                            td #{product.dealername}
+                            td #{product.branch}
+                            td #{product.Contact}
+                            td #{product.sellingprice}
+                            td 
+                                form.delete(method="post" action='/product/delete')
+                                        input(type="hidden", placeholder="", name="id", value=product._id)
+                                        button.button2(type="submit") Delete
+                        
+                            td 
+                                form.edit(method="post" action='/product/edit')
+                                        input(type="hidden", placeholder="", name="id", value=product._id)
+                                        button.button2(type="submit") Edit

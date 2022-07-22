@@ -1,0 +1,51 @@
+extends layout
+block content
+    body.collections
+            hr
+            header#header.fixed-top.d-flex.align-items-center
+                .container.d-flex.align-items-center.justify-content-between
+                    .logo
+                        a(href='index.html')
+                        img(src='/images/logo.png')
+                    
+                    h2.companyname
+                        | Karibu Grocery Limited
+                        strong 
+                    nav#navbar.navbar
+                        ul
+                        
+                        li
+                            a.nav-link(href='/register') Back
+                        li
+                            a.nav-link(href='/logout') Logout
+                        i.bi.bi-list.mobile-nav-toggle
+                    // .navbar
+            hr
+            hr
+            hr
+            hr
+            table.table.table-washers 
+                thead
+                    tr
+                        th User Name
+                        th Email
+                        th Role
+                        th Edit 
+                        th Delete
+                        
+                    
+                tbody
+                    if users.length 
+                    each user in users 
+                        tr 
+                            td #{user.username}
+                            td #{user.email}
+                            td #{user.role}
+                            td 
+                                form.edit(method="post" action='/userlist/edit')
+                                        input(type="hidden", placeholder="", name="id", value=user._id)
+                                        a.btn.btn-success.btn-block(href='/userlist/edit'+user._id) Edit
+                            td 
+                                form.delete(method="post" action='/userlist/delete')
+                                        input(type="hidden", placeholder="", name="id", value=user._id)
+                                        button.button2(type="submit") Delete
