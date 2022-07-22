@@ -27,6 +27,7 @@ router.post('/login', passport.authenticate('local', { failureRedirect: '/' }),
         }
 
     });
+    //logout route
 router.get('/logout', (req, res) => {
 
     req.session.destroy(() => {
