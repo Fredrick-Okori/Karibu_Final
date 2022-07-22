@@ -21,13 +21,13 @@ router.post('/login', passport.authenticate('local', { failureRedirect: '/' }),
         } else if (userrole == 'director') {
             res.redirect('/register')
         } else if (userrole == 'agent') {
-            res.redirect('/sell')
+            res.redirect('/creditagent')
         } else {
             res.redirect('/nonuser')
         }
 
     });
-    //logout route
+//logout route
 router.get('/logout', (req, res) => {
 
     req.session.destroy(() => {

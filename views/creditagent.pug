@@ -3,7 +3,7 @@ html(lang='en')
   head
     meta(charset='utf-8')
     meta(content='width=device-width, initial-scale=1.0', name='viewport')
-    title Sales | Karibu Grocery Limited
+    title Credit | Karibu Grocery Limited
     meta(content='', name='description')
     meta(content='', name='keywords')
     // Favicon
@@ -37,38 +37,49 @@ html(lang='en')
           
         h2.companyname
           | Karibu Grocery Limited
-          strong  | Sales Portal 
+          strong  | Credit Portal 
         nav#navbar.navbar
           ul
             li
-              a.nav-link(href='/procument') Enter Produce
+              a.nav-link(href='/agent') Enter Sales
             li
-              a.nav-link(href='/sell') Enter Sales
+              a.nav-link(href='/creditagent') Credit Client
             li
-              a.nav-link(href='/credit') Credit Client
-            li
-              a.nav-link(href='/') Logout
-            li.bi.bi-list.mobile-nav-toggle
+              a.nav-link(href='/logout') Logout
+            i.bi.bi-list.mobile-nav-toggle
         // .navbar
     // End Header
     main#main
       // ======= Breadcrumbs =======
-      section#breadcrumbs.breadcrumbs
+    
         .container
-          .d-flex.justify-content-between.align-items-center
-            // <h2 class="companyname"> Karibu Grocery Limited<strong> | Business Portal </strong></h2>
-            h4 
-      hr    
-      // End Breadcrumbs
+      hr
+      hr
+      hr
+      hr
+      hr     
       .container
         .col-lg-8         
-          form(action='/sell' method='POST')
+          form(action='/credit' method='POST')
             .row 
               .col 
-                h3.loginheader Enter produce details below and click Submit
+                h3.loginheader Enter credit details below and click save
             .row              
               .col-lg-6
-                
+                input(type='text', name='buyername', placeholder='Name of Buyer', onblur='buyerNameVal(3, this, errorbuyer)')
+                span#errorbuyer
+              .col.lg-6 
+                input(type='text', name='nin', placeholder='NIN Number', onblur='ninNumVal(15, this, ninerror)')
+                span#ninerror
+            .row 
+              .col-lg-6 
+                input(type='text', name='contact', placeholder='Contact', onblur='contactVal(10, this, contacterror)')
+                span#contacterror
+              .col-lg-6 
+                input(type='text', name='location', placeholder='Location', onblur='locationVal(3, this, locationerror)')
+                span#locationerror
+            .row             
+              .col-lg-6
                 select(id='producename' required name='producetype')
                   option(value='default', name='default') Produce Type
                   option(value='beans', name='beans') Beans 
@@ -77,30 +88,30 @@ html(lang='en')
                   option(value='G-nuts', name='nuts') G-nuts 
                   option(value='Soya', name='Soyabeans') Soybeans
                   span#produceerror
-                
               .col-lg-6
-                input(type='number', id='tonnage' name='tonnage', placeholder='Tonnage in Kgs',  onblur='tonnageVal(3, this, tonnageerror)', onchange='sellingPrice()')
+                input(type='number', id='tonnage' name='tonnage', placeholder='Tonnage in Kgs', onblur='tonnageVal(3, this, tonnageerror)', onchange='dueAmount()')
                 span#tonnageerror
-            .row 
-              .col.lg-6 
-                input(type='number', id='rate' name='rate', placeholder='Unit Price', onblur='rateVal(4, this, rateerror)', onchange='sellingPrice()')
+            .row                           
+              
+              .col-lg-6
+                input(type='number', id='rate' name='rate', placeholder='Unit Price', onblur='rateVal(4, this, rateerror)', onchange='dueAmount()')
                 span#rateerror
-              .col-lg-6 
-                input(type='number', id='sellingprice' name='sellingprice', placeholder='Selling Price', sellingPrice())
+              .col-lg-6
+                input(type='number', id='dueamount' name='dues', placeholder='Amount Due', dueAmount())
+            .row
+              .col-lg-6
+               input(type='date', name='duedate', placeholder='Due Date' required)
+              
+              .col-lg-6
+               input(type='datetime-local', name='dispatchdate', placeholder='Dispatch Date' required)
             .row 
               .col-lg-6
-                input(type='text', name='buyername', placeholder='Buyer Name', onblur='buyerNameVal(3, this, errorbuyer)')
-                span#errorbuyer
-              .col-lg-6
-                input(type='date', name='date', placeholder='Date of Sale' required)
-            
-            .row
-              .col-lg-6 
-                input(type='text', name='creditor', placeholder='Creditor', onblur='agentVal(3, this, agenterror)')
+                input(type='text', name='agent', placeholder='Agent Name' onblur='agentVal(3, this, agenterror)')
                 span#agenterror
               .col-lg-6
-                button(type='submit') Submit
-           
+                button(type='submit') SAVE
+
+
     footer#footer
       .container
         h3(style='color:#80C41C') Karibu Grocery Limited

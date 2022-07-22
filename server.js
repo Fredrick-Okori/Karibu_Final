@@ -25,6 +25,9 @@ const creditRoutes = require('./routes/creditRoutes');
 const salesRoutes = require('./routes/sellRoutes');
 const creditreport = require('./routes/creditreport');
 const salereportRoute = require('./routes/salereportRoute');
+const agentRoutes = require('./routes/agentRoutes');
+const creditagentRoutes = require('./routes/creditagentRoutes');
+
 
 
 
@@ -88,6 +91,8 @@ server.use('/producelist', produceroutes);
 server.use('/userlist', userlistroutes);
 server.use('/creditreport', creditreport);
 server.use('/salesreport', salereportRoute);
+server.use('/agent', agentRoutes);
+server.use('/creditagent', creditagentRoutes);
 
 server.get('/nonuser', (req, res) => {
     res.render('nonuserform')
