@@ -7,7 +7,7 @@ require('dotenv').config();
 
 // Express Session
 const expressSession = require('express-session')({
-    secret: 'secret',
+    secret: 'armitage3434!',
     resave: false,
     saveUninitialized: false,
 });
@@ -22,16 +22,11 @@ const loginRoutes = require("./routes/loginroutes");
 const userlistroutes = require("./routes/userlistroutes");
 const produceroutes = require("./routes/produceroutes");
 const creditRoutes = require('./routes/creditRoutes');
-const salesRoutes = require('./routes/sellRoutes');
+const sellRoutes = require('./routes/sellRoutes');
 const creditreport = require('./routes/creditreport');
 const salereportRoute = require('./routes/salereportRoute');
 const agentRoutes = require('./routes/agentRoutes');
 const creditagentRoutes = require('./routes/creditagentRoutes');
-
-
-
-
-
 
 
 const User = require("./models/User");
@@ -72,21 +67,14 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//Restrict access of URL
-// const loginchecker = function(req, res, next){
-//     if(req.path != '/' && !req.session.user){
-//     res.redirect('/');
-// }
-// next();
-// }
-// server.use(loginchecker);
+
 
 // Routing
 server.use('/', loginRoutes);
 server.use('/register', registerRoutes);
 server.use('/procurement', managerRoutes);
 server.use('/credit', creditRoutes);
-server.use('/sell', salesRoutes);
+server.use('/sell', sellRoutes);
 server.use('/producelist', produceroutes);
 server.use('/userlist', userlistroutes);
 server.use('/creditreport', creditreport);

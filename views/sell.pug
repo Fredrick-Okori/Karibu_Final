@@ -62,13 +62,12 @@ html(lang='en')
       // End Breadcrumbs
       .container
         .col-lg-8         
-          form(action='/sell' method='POST')
+          form(action='/sales' method='POST')
             .row 
               .col 
                 h3.loginheader Enter produce details below and click Submit
             .row              
               .col-lg-6
-                
                 select(id='producename' required name='producetype')
                   option(value='default', name='default') Produce Type
                   option(value='beans', name='beans') Beans 
@@ -86,7 +85,7 @@ html(lang='en')
                 input(type='number', id='rate' name='rate', placeholder='Unit Price', onblur='rateVal(4, this, rateerror)', onchange='sellingPrice()')
                 span#rateerror
               .col-lg-6 
-                input(type='number', id='sellingprice' name='sellingprice', placeholder='Selling Price', sellingPrice())
+                input(type='number', id='sellingprice', name='sellingprice', placeholder='Selling Price', sellingPrice())
             .row 
               .col-lg-6
                 input(type='text', name='buyername', placeholder='Buyer Name', onblur='buyerNameVal(3, this, errorbuyer)')

@@ -7,7 +7,6 @@ router.get('/', (req, res) => {
 });
 
 
-
 router.post('/delete', async (req, res) => {
     try {
         await User.deleteOne({ _id: req.body.id })

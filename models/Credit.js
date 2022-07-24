@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-
-
 const creditSchema = new mongoose.Schema({
 
     buyername: {

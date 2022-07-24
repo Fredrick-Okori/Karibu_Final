@@ -11,6 +11,17 @@ router.get('/', (req, res) => {
     res.render('login', { title: 'User Login' })
 });
 
+module.exports = {
+    ensureAuth: function (req, res, next) {
+        if (req.isAuthenticated()) {
+            return next()
+        }
+        else {
+            res.redirect('/')
+        }
+    },
+}
+
 //Request the server to authenticate user to login, and respond with dashboard
 router.post('/login', passport.authenticate('local', { failureRedirect: '/' }),
     (req, res) => {

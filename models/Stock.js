@@ -1,5 +1,5 @@
-const mongoose = require('mongoose'),
-   StockSchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+  const StockSchema = new mongoose.Schema({
        producename: {
             type: String,
             trim: true,
@@ -34,8 +34,9 @@ const mongoose = require('mongoose'),
        },
        sellingprice: {
            type: Number,
-           trim: true,
+           
        },
     });
 
 module.exports = mongoose.model('Stock', StockSchema);
+

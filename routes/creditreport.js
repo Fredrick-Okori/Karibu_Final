@@ -22,6 +22,29 @@ router.get('/', async (req, res) => {
         res.send('Failed to retrieve  Deffered payment details')
     }
 });
+
+module.exports = {
+    ensureAuth: function (req, res, next) {
+        if (req.isAuthenticated()) {
+            return next()
+        }
+        else {
+            res.redirect('/')
+        }
+    },
+
+    ensureGuest: function (req, res, next) {
+        if (req.isAuthenticated()) {
+            res.redirect('/register')
+        }
+        else {
+            return next()
+        }
+    }
+
+
+}
+
 //delete deffered payment
 router.post('/delete', async (req, res) => {
     try {

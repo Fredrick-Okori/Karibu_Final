@@ -5,7 +5,7 @@ const Stock = require('../models/Stock');
 
 
 router.get('/', (req, res) => {
-    res.render('procument')
+    res.render('procurement')
 });
 
 router.post('/', async (req, res) => {
@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
         let stock = new Stock(req.body);
         await stock.save();
         console.lgo(req.body);
-        res.redirect('/procument')
+        res.redirect('/procurement')
     }
     catch (err) {
         res.status(400).render('nonuserform', { title: 'Stock', routeName: 'stock' })

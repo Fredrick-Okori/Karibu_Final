@@ -1,17 +1,16 @@
 const mongoose = require('mongoose');
-const SaleSchema = new mongoose.Schema({
+const saleSchema = new mongoose.Schema({
 
     producetype: {
         type: String,
+        trim: true,
     },
     tonnage: {
         type: Number,
         trim: true,
-
     },
     rate: {
-        type: Number,
-        trim: true,
+        type: Number,  
     },
     sellingprice: {
         type: Number,
@@ -19,7 +18,6 @@ const SaleSchema = new mongoose.Schema({
     buyername: {
         type: String,
         trim: true,
-
     },
     date: {
         type: Date,
@@ -28,11 +26,8 @@ const SaleSchema = new mongoose.Schema({
         type: String,
         trim: true,
     }
-
-   
 });
 
 // Export Model
-
-module.exports = mongoose.model("Sale", SaleSchema);
+module.exports = mongoose.model("Sales", saleSchema);
 

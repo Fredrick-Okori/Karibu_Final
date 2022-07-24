@@ -11,7 +11,6 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res) => {
     try {
         let credit = new Credit(req.body);
-
         await credit.save();
         res.redirect('/credit')
     }

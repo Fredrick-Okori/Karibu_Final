@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-//require Mananger database to save new user 
+//require Sale database to save new Sales 
 const Sale = require('../models/Sale');
 
 
@@ -11,13 +11,14 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res) => {
     try {
         let sale = new Sale(req.body);
-
         await sale.save();
         console.log(req.body);
-        res.redirect('/sell')
+        res.redirect('/sell');
+        
     }
     catch (err) {
-        res.status(400).render('sell', { title: 'sales', routeName: 'sellRoute' })
+        res.status(400).render('sell', { title: "Sales", routeName: 'Sales' })
     }
+
 });
 module.exports = router;
