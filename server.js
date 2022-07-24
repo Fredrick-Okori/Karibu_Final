@@ -3,11 +3,15 @@ const express = require('express'),
     mongoose = require('mongoose'),
     passport = require('passport');
 require('dotenv').config();
+const User = require("./models/User");
+
+// Database
+const config = require('./config/database');
 
 
 // Express Session
 const expressSession = require('express-session')({
-    secret: 'armitage3434!',
+    secret: 'secret',
     resave: false,
     saveUninitialized: false,
 });
@@ -16,24 +20,20 @@ const expressSession = require('express-session')({
 //  Userlogin = require("./models/Userlogin"),
 
 // Routes
-const managerRoutes = require("./routes/managerRoute");
+const stockRoutes = require("./routes/stockRoutes");
 const registerRoutes = require("./routes/registerroutes");
+const stockreportRoutes = require("./routes/stockreportRoutes");
 const loginRoutes = require("./routes/loginroutes");
 const userlistroutes = require("./routes/userlistroutes");
-const produceroutes = require("./routes/produceroutes");
 const creditRoutes = require('./routes/creditRoutes');
-const sellRoutes = require('./routes/sellRoutes');
 const creditreport = require('./routes/creditreport');
 const salereportRoute = require('./routes/salereportRoute');
-const agentRoutes = require('./routes/agentRoutes');
+const salesRoutes = require('./routes/agentRoutes');
 const creditagentRoutes = require('./routes/creditagentRoutes');
 
 
-const User = require("./models/User");
-
-// Database
-const config = require('./config/database');
-
+// New routes
+const salesagentRoutes = require('./routes/salesagentRoutes');
 
 //Initialising server
 const server = express();
@@ -72,16 +72,17 @@ passport.deserializeUser(User.deserializeUser());
 // Routing
 server.use('/', loginRoutes);
 server.use('/register', registerRoutes);
-server.use('/procurement', managerRoutes);
+server.use('/procurement', stockRoutes);
+server.use('/stockreport', stockreportRoutes);
 server.use('/credit', creditRoutes);
-server.use('/sell', sellRoutes);
-server.use('/producelist', produceroutes);
+server.use('/sales', salesRoutes);
 server.use('/userlist', userlistroutes);
 server.use('/creditreport', creditreport);
 server.use('/salesreport', salereportRoute);
-server.use('/agent', agentRoutes);
 server.use('/creditagent', creditagentRoutes);
 
+//trying new routes
+server.use('/sales', salesagentRoutes);
 server.get('/nonuser', (req, res) => {
     res.render('nonuserform')
 });

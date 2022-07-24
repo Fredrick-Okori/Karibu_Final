@@ -12,11 +12,11 @@ router.post('/', async (req, res) => {
     try {
         let stock = new Stock(req.body);
         await stock.save();
-        console.lgo(req.body);
-        res.redirect('/procurement')
+        res.redirect('/procurement');
+       
     }
     catch (err) {
-        res.status(400).render('nonuserform', { title: 'Stock', routeName: 'stock' })
+        res.status(400).render('credit', { title: 'Credit', routeName: 'credits' })
     }
 });
 module.exports = router;

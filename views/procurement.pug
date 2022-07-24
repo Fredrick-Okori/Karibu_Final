@@ -31,7 +31,7 @@ html(lang='en')
     header#header.fixed-top.d-flex.align-items-center
       .container.d-flex.align-items-center.justify-content-between
         .logo
-          a(href='index.html')
+          a(href='#')
             img(src='/images/logo.png')
 
           
@@ -44,7 +44,7 @@ html(lang='en')
             li
               a.nav-link(href='/procurement') Enter Produce
             li
-              a.nav-link(href='/sell') Enter Sales
+              a.nav-link(href='/sales') Enter Sales
             li
               a.nav-link(href='/credit') Credit Client
             li
@@ -65,7 +65,7 @@ html(lang='en')
       // End Breadcrumbs
       .container
         .col-lg-8         
-          form(action='/procurement' method='POST')
+          form(action='/procurement', method='POST')
             .row 
               .col 
                 h3.loginheader Enter produce details below and click save
@@ -75,21 +75,21 @@ html(lang='en')
                 br
                 span#errormessage 
               .col-lg-6
-                select(id="type", name='default' onblur='produceType(errortype)', required="")
-                  option(value='select', name='role' placeholder='Select role') Select Produce type
-                  option(value='agent', name='role') Cereal 
-                  option(value='manager', name='role') Grains
+                select(id="type", name='type' onblur='produceType(errortype)', required="")
+                  option(value='select', name='default' placeholder='Select role') Select Produce type
+                  option(value='agent', name='cereal') Cereal 
+                  option(value='manager', name='grains') Grains
                 span#errortype
             .row 
               .col.lg-6 
-                input(type='date', name='datetime-local', placeholder='Date & time')
+                input(type='date', name='datetime', placeholder='Date & time')
               .col-lg-6 
-                input(type='text', name='tonnage', placeholder='Tonnage in KGS' onblur='tonnageVal(2, this, errortonnage)')
+                input(type='number', name='tonnage', placeholder='Tonnage in KGS' onblur='tonnageVal(2, this, errortonnage)')
                 br
                 span#errortonnage
             .row
               .col-lg-6 
-                input(type='text', name='cost', placeholder='Buying Price',  onblur='priceVal(5, this, errorprice)')
+                input(type='number', name='cost', placeholder='Buying Price',  onblur='priceVal(5, this, errorprice)')
                 br
                 span#errorprice
 
@@ -99,16 +99,16 @@ html(lang='en')
             .row              
               .col-lg-6
                  select(name='branch')
-                  option(value='select', name='role' placeholder='Select role') Select Branch
-                  option(value='branch', name='branch') Matuga 
-                  option(value='branch', name='branch') Maganjo
+                  option(value='select', name='default' placeholder='Select role') Select Branch
+                  option(value='branch', name='matugga') Matuga 
+                  option(value='branch', name='maganjo') Maganjo
               .col-lg-6
                 input(type='text', name='contact', placeholder='Phone', onblur='phoneVal(10, this, errorphone)')
                 br
                 span#errorphone
             .row
               .col-lg-6
-                input(type='text', name='sellingprice', placeholder='Selling price', onblur='sellingVal(5, this, errorselling)')
+                input(type='number', name='sellingprice', placeholder='Selling price', onblur='sellingVal(5, this, errorselling)')
                 br
                 span#errorselling
               .col-lg-6

@@ -1,0 +1,72 @@
+extends layout
+block content
+    body.collections
+            hr
+            header#header.fixed-top.d-flex.align-items-center
+                .container.d-flex.align-items-center.justify-content-between
+                    .logo
+                        a(href='#')
+                        img(src='/images/logo.png')
+                    
+                    h2.companyname
+                        | Karibu Grocery Limited
+                        strong  | Stock Report
+                    nav#navbar.navbar
+                        ul
+                        
+                        li
+                            a.nav-link(href='/register') Back
+                        li
+                            a.nav-link(href='/logout') Logout
+                        i.bi.bi-list.mobile-nav-toggle
+                    // .navbar
+            hr
+            hr
+            hr
+            hr
+            h3.loginheader 
+          
+                span Total Credit:
+                 strong  | #{total.totalstock} UGX
+                span       Stock in Tonnage:
+                    strong | #{total.totaltonnage} Kgs 
+                
+            table.table.table-washers 
+                thead
+                    tr
+                        th Produce
+                        th Type
+                        th Purchase date
+                        th Tonnage 
+                        th Buying price
+                        th Dealer
+                        th Branch 
+                        th Contact 
+                        th Price to be sold
+                        th Edit 
+                        th Delete
+                        
+                    
+                tbody
+                    if stocks.length 
+                    each stock in stocks 
+                        tr 
+                            td #{stock.producename}
+                            td #{stock.type}
+                            td #{stock.datetime}
+                            td #{stock.tonnage}
+                            td #{stock.cost}
+                            td #{stock.dealearname}
+                            td #{stock.branch}
+                            td #{stock.contact}
+                            td #{stock.sellingprice}
+                          
+                           
+                            td 
+                                form.edit(method="post" action='/stockreport/edit')
+                                    input(type="hidden", placeholder="", name="id", value=stock._id)
+                                    a.btn.btn-success.btn-block(href='/stockreport/edit'+stock._id) Edit
+                            td 
+                                form.delete(method="post" action='/stockreport/delete')
+                                    input(type="hidden", placeholder="", name="id", value=stock._id)
+                                    button.button2(type="submit") Delete
