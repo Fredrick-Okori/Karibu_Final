@@ -15,9 +15,7 @@ const expressSession = require('express-session')({
     resave: false,
     saveUninitialized: false,
 });
-//models
-// Models
-//  Userlogin = require("./models/Userlogin"),
+
 
 // Routes
 const stockRoutes = require("./routes/stockRoutes");
@@ -28,12 +26,12 @@ const userlistroutes = require("./routes/userlistroutes");
 const creditRoutes = require('./routes/creditRoutes');
 const creditreport = require('./routes/creditreport');
 const salereportRoute = require('./routes/salereportRoute');
-const salesRoutes = require('./routes/agentRoutes');
-const creditagentRoutes = require('./routes/creditagentRoutes');
+const salesRoutes = require('./routes/salesRoutes');
 
 
-// New routes
-const salesagentRoutes = require('./routes/salesagentRoutes');
+
+
+
 
 //Initialising server
 const server = express();
@@ -42,6 +40,8 @@ const server = express();
 //connect mongoose
 mongoose.connect(config.database, { useNewUrlParser: true });
 const db = mongoose.connection;
+
+
 // Check connection
 db.once('open', function () {
     console.log('Connected to MongoDB');
@@ -75,14 +75,12 @@ server.use('/register', registerRoutes);
 server.use('/procurement', stockRoutes);
 server.use('/stockreport', stockreportRoutes);
 server.use('/credit', creditRoutes);
-server.use('/sales', salesRoutes);
 server.use('/userlist', userlistroutes);
 server.use('/creditreport', creditreport);
 server.use('/salesreport', salereportRoute);
-server.use('/creditagent', creditagentRoutes);
+server.use('/sales', salesRoutes);
 
-//trying new routes
-server.use('/sales', salesagentRoutes);
+
 server.get('/nonuser', (req, res) => {
     res.render('nonuserform')
 });

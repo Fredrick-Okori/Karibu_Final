@@ -11,16 +11,7 @@ router.get('/', (req, res) => {
     res.render('login', { title: 'User Login' })
 });
 
-module.exports = {
-    ensureAuth: function (req, res, next) {
-        if (req.isAuthenticated()) {
-            return next()
-        }
-        else {
-            res.redirect('/')
-        }
-    },
-}
+
 
 //Request the server to authenticate user to login, and respond with dashboard
 router.post('/login', passport.authenticate('local', { failureRedirect: '/' }),
@@ -32,7 +23,7 @@ router.post('/login', passport.authenticate('local', { failureRedirect: '/' }),
         } else if (userrole == 'director') {
             res.redirect('/register')
         } else if (userrole == 'agent') {
-            res.redirect('/creditagent')
+            res.redirect('/agent')
         } else {
             res.redirect('/nonuser')
         }

@@ -26,14 +26,13 @@ block content
             hr
             hr
             h3.loginheader 
-                span
-                    strong Sales Total:
-                        |  #{total.totalSales} UGX
+                //- span
+                //-     strong Sales Total:
+                //-         |  #{total.totalSales} UGX
                
             table.table.table-washers 
                 thead
                     tr
-                        
                         th Produce
                         th Tonnage(kgs)
                         th Rate 
@@ -43,8 +42,6 @@ block content
                         th Sales Agent 
                         th Edit 
                         th Delete
-                        
-                    
                 tbody
                     if sales.length 
                     each sale in sales 
@@ -59,10 +56,10 @@ block content
                             
                            
                             td 
-                                form.edit(method="post" action='/salereport/edit')
+                                form.edit(method="post" action='/salesreport/edit')
                                     input(type="hidden", placeholder="", name="id", value=sale._id)
-                                    a.btn.btn-success.btn-block(href='/salereport/edit'+sale._id) Edit
+                                    a.btn.btn-success.btn-block(href='/salesreport/edit'+sale._id) Edit
                             td 
-                                form.delete(method="post" action='/salereport/delete')
+                                form.delete(method="post" action='/salesreport/delete')
                                     input(type="hidden", placeholder="", name="id", value=sale._id)
                                     button.button2(type="submit") Delete

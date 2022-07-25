@@ -12,13 +12,14 @@ router.post('/', async (req, res) => {
     try {
         let sale = new Sale(req.body);
         await sale.save();
-        console.log(req.body);
         res.redirect('/sales');
-        
+        console.log(req.body);    
     }
     catch (err) {
-        res.status(400).render('sales', { title: "sold goods", routeName: 'sell' })
+        res.status(400).redirect('/sales')
+        console.log('Not successful')
     }
 
 });
+
 module.exports = router;

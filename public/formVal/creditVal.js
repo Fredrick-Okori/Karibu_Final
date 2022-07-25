@@ -176,10 +176,10 @@ let agentVal = (min, agentField, agenterror) => {
 //Calculate selling price
 let sellingPrice = () => {
 
-    var tonnage = parseInt(document.getElementById('tonnage').value);
-    var rate = parseInt(document.getElementById('rate').value);
+    let tonnage = parseInt(document.getElementById('tonnage').value); 200
+    let rate = parseInt(document.getElementById('rate').value); 300
 
-    var dueamount = tonnage * rate;
+    let dueamount = tonnage * rate; 
     document.getElementById('sellingprice').value = parseInt(dueamount);
 
 }

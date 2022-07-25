@@ -3,7 +3,7 @@ html(lang='en')
   head
     meta(charset='utf-8')
     meta(content='width=device-width, initial-scale=1.0', name='viewport')
-    title Sales | Karibu Grocery Limited
+    title Sold | Karibu Grocery Limited
     meta(content='', name='description')
     meta(content='', name='keywords')
     // Favicon
@@ -40,12 +40,11 @@ html(lang='en')
           strong  | Sales Portal 
         nav#navbar.navbar
           ul
+         
             li
-              a.nav-link(href='/procurement') Enter Produce
+              a.nav-link.btn(href='/sales') Enter Sales
             li
-              a.nav-link(href='/sell') Enter Sales
-            li
-              a.nav-link(href='/credit') Credit Client
+              a.nav-link.btn(href='/credit') Credit Client
             li
               a.nav-link(href='/') Logout
             li.bi.bi-list.mobile-nav-toggle
@@ -67,7 +66,8 @@ html(lang='en')
               .col 
                 h3.loginheader Enter produce details below and click Submit
             .row              
-              .col-lg-6
+              .col-lg-6 
+                
                 select(id='producename' required name='producetype')
                   option(value='default', name='default') Produce Type
                   option(value='beans', name='beans') Beans 

@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
         let sale = new Sale(req.body);
         await sale.save();
         console.log(req.body);
-        res.redirect('/sales');
+        res.redirect('/agent');
 
     }
     catch (err) {

@@ -4,6 +4,20 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+
+//Add an active state to clicked nav link
+let btnContainer = document.querySelector('#navbar');
+let btns = btnContainer.querySelector('btn');
+
+for (i = 0; i < btns.length; i++){
+  btns[i].addEventListener('click', function () {
+    let current = document.getElementById('active');
+    if (current.length > 0) {
+      current[0].className = current[0].className.replace(' active', "");
+    }
+    this.className += " active";
+  })
+}
 (function() {
   "use strict";
 
