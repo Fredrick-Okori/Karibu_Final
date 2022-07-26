@@ -5,7 +5,9 @@ const Sale = require('../models/Sale');
 
 
 router.get('/', (req, res) => {
-    res.render('agent')
+   
+        res.render('agent')
+   
 });
 
 router.post('/', async (req, res) => {

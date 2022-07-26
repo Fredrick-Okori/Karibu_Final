@@ -6,7 +6,9 @@ const Stock = require('../models/Stock');
 
 
 router.get('/', (req, res) => {
-    res.render('producelist')
+   
+        res.render('producelist')
+   
 });
 
 router.post('/', async (req, res) => {

@@ -5,12 +5,15 @@ const Sale = require('../models/Sale');
 
 
 router.get('/', (req, res) => {
-    res.render('sales')
+   
+        res.render('sales')
+    
+   
 });
 
 router.post('/', async (req, res) => {
     try {
-        let sale = new Sale(req.body);
+        const sale = new Sale(req.body);
         await sale.save();
         res.redirect('/sales');
         console.log(req.body);    

@@ -5,7 +5,9 @@ const Credit = require('../models/Credit');
 
 
 router.get('/', (req, res) => {
-    res.render('credit')
+    
+        res.render('credit')
+   
 });
 
 router.post('/', async (req, res) => {

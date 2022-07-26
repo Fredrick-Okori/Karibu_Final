@@ -5,7 +5,9 @@ const router = express.Router();
 const User = require('../models/User');
 
 router.get('/', (req, res) => {
-    res.render('farmanager_register')
+ 
+        res.render('farmanager_register')
+  
 });
 
 router.post('/', async (req, res) => {
