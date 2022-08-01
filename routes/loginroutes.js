@@ -22,7 +22,7 @@ router.post('/login', passport.authenticate('local', { failureRedirect: '/' }),
             res.redirect('/procurement')
         } else if (userrole == 'director') {
             res.redirect('/register')
-        } else if (userrole == 'sales') {
+        } else if (userrole == 'agent') {
             res.redirect('/sales')
         } else {
             res.redirect('/nonuser')

@@ -36,6 +36,7 @@ const stockSchema = new mongoose.Schema({
         type: Number,
 
     },
+    
 });
 
 module.exports = mongoose.model('Stock', stockSchema);
