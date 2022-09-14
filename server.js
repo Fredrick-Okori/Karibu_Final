@@ -16,6 +16,7 @@ const expressSession = require('express-session')({
     saveUninitialized: false,
 });
 
+const port = process.env.port || 5000;
 
 // Routes
 const stockRoutes = require("./routes/stockRoutes");
@@ -27,8 +28,6 @@ const creditRoutes = require('./routes/creditRoutes');
 const creditreport = require('./routes/creditreport');
 const salereportRoute = require('./routes/salereportRoute');
 const salesRoutes = require('./routes/salesRoutes');
-
-
 
 
 
@@ -98,4 +97,6 @@ server.get('*', (req, res) => {
 });
 
 // server
-server.listen(5000, () => console.log('Listening on Port 5000'));
+// server.listen(5000, () => console.log('Listening on Port 5000'));
+
+app.listen(port, ()=> console.log(`Listening to Port Number ${port}`));
