@@ -40,53 +40,6 @@ const PORT =process.env.PORT ||5000
 //
 // Mongoose Set up
 //connect mongoose
-mongoose.connect(config.database, { useNewUrlParser: true });
-const db = mongoose.connection;
-
-
-// Check connection
-db.once('open', function () {
-    console.log('Connected to MongoDB');
-});
-// Check for db errors
-db.on('error', function (err) {
-    console.error(err);
-});
-
-// Setting view Engine.
-server.set('view engine', 'pug');
-server.set('views', './views');
-
-// Express Middleware
-server.use(express.urlencoded({ extended: true }));
-server.use(express.static(path.join(__dirname, 'public')));
-server.use(expressSession);
-
-//configuring passport middleware
-server.use(passport.initialize());
-passport.use(passport.session());
-passport.use(User.createStrategy());
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
-
-
-// Routing
-server.use('/', loginRoutes);
-server.use('/register', registerRoutes);
-server.use('/procurement', stockRoutes);
-server.use('/stockreport', stockreportRoutes);
-server.use('/credit', creditRoutes);
-server.use('/userlist', userlistroutes);
-server.use('/creditreport', creditreport);
-server.use('/salesreport', salereportRoute);
-server.use('/sales', salesRoutes);
-
-
-server.get('/nonuser', (req, res) => {
-    res.render('nonuserform')
-});
-
 
 // server.use('/edit_product', produceroutes);
 
