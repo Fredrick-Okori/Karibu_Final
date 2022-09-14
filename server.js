@@ -36,6 +36,7 @@ const { env } = require('process');
 
 //Initialising server
 const server = express();
+const PORT =process.env.PORT ||5000
 //
 // Mongoose Set up
 //connect mongoose
@@ -99,5 +100,5 @@ server.get('*', (req, res) => {
 });
 
 // server
-// server.listen(5000, () => console.log('Listening on Port 5000'));
-process.env.PORT || 5000
+
+server.listen(5000, () => console.log('Listening on Port 5000'));
