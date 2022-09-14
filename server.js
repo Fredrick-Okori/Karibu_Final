@@ -27,6 +27,7 @@ const creditRoutes = require('./routes/creditRoutes');
 const creditreport = require('./routes/creditreport');
 const salereportRoute = require('./routes/salereportRoute');
 const salesRoutes = require('./routes/salesRoutes');
+const { env } = require('process');
 
 
 
@@ -98,4 +99,5 @@ server.get('*', (req, res) => {
 });
 
 // server
-server.listen(5000, () => console.log('Listening on Port 5000'));
+// server.listen(5000, () => console.log('Listening on Port 5000'));
+process.env.PORT || 5000
