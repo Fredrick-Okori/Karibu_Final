@@ -4,6 +4,7 @@ const express = require('express'),
     passport = require('passport');
 require('dotenv').config();
 const User = require("./models/User");
+const logger = require("./logger");
 
 // Database
 const config = require('./config/database');
@@ -16,7 +17,7 @@ const expressSession = require('express-session')({
     saveUninitialized: false,
 });
 
-const port = process.env.port || 5000;
+const port = process.env.PORT;
 
 // Routes
 const stockRoutes = require("./routes/stockRoutes");
@@ -48,6 +49,7 @@ db.once('open', function () {
 // Check for db errors
 db.on('error', function (err) {
     console.error(err);
+    logger.error(err.message);
 });
 
 // Setting view Engine.
@@ -99,4 +101,7 @@ server.get('*', (req, res) => {
 // server
 // server.listen(5000, () => console.log('Listening on Port 5000'));
 
-app.listen(port, ()=> console.log(`Listening to Port Number ${port}`));
+server.listen(port, () =>{
+    console.log(`Listening to Port Number ${port}`)
+logger.info(`Listening to Port Number $"{port}`)
+});
