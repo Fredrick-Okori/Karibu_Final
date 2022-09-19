@@ -1,7 +1,8 @@
 const express = require('express'),
     path = require('path'),
     mongoose = require('mongoose'),
-    passport = require('passport');
+    passport = require('passport'),
+    logger = require("./logger");
 require('dotenv').config();
 
 const User = require("./models/User");
@@ -31,6 +32,7 @@ const creditRoutes = require('./routes/creditRoutes');
 const creditreport = require('./routes/creditreport');
 const salereportRoute = require('./routes/salereportRoute');
 const salesRoutes = require('./routes/salesRoutes');
+// const { default: logger } = require('eslint-config/dist/logger');
 
 // const { env } = require('process');
 
@@ -48,6 +50,7 @@ db.once('open', function () {
 // Check for db errors
 db.on('error', function (err) {
   console.error(err);
+  logger.error(err.message)
 });
 
 // server.use('/edit_product', produceroutes);
@@ -63,4 +66,8 @@ server.get('*', (req, res) => {
 
 // server
 
-server.listen (PORT, () => console.log(`listening on port ${PORT}`));
+server.listen (PORT, () => {
+  console.log(`listening on port ${PORT}`)
+  logger.info(`server listening on port ${PORT}`)
+
+})
