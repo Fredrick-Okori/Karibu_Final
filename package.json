@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "tests":"test",
+  "tests": "test",
   "scripts": {
-    "test": "mocha",
+    "test": " nyc mocha --timeout 1000",
+    "coverage": "nyc --reporter=lcov --reporter=text-lcov npm test",
     "start": "nodemon server.js"
   },
   "keywords": [],
@@ -29,6 +30,7 @@
     "winston-mongodb": "^5.0.7"
   },
   "devDependencies": {
-    "eslint": "^8.23.1"
+    "eslint": "^8.23.1",
+    "nyc": "^15.1.0"
   }
 }
