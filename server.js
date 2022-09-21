@@ -4,6 +4,7 @@ const express = require('express'),
     passport = require('passport');
 require('dotenv').config();
 const User = require("./models/User");
+const logger = require("./logger");
 
 // Database
 const config = require('./config/database');
@@ -16,6 +17,7 @@ const expressSession = require('express-session')({
     saveUninitialized: false,
 });
 
+const port = process.env.PORT;
 
 // Routes
 const stockRoutes = require("./routes/stockRoutes");
@@ -32,8 +34,6 @@ const { env } = require('process');
 
 
 
-
-
 //Initialising server
 const server = express();
 const PORT =process.env.PORT ||5000
@@ -41,17 +41,3 @@ const PORT =process.env.PORT ||5000
 // Mongoose Set up
 //connect mongoose
 
-// server.use('/edit_product', produceroutes);
-
-
-
-
-// Non Existing Routes and Server Port
-// handling non existing routes
-server.get('*', (req, res) => {
-    res.send('OOPS! WRONG ADDRESS');
-});
-
-// server
-
-server.listen(5000, () => console.log('Listening on Port 5000'));
