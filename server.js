@@ -18,8 +18,6 @@ const expressSession = require('express-session')({
     saveUninitialized: false,
 });
 
-//Initialising server
-const server = express();
 
 
 // Routes
@@ -36,6 +34,7 @@ const salesRoutes = require('./routes/salesRoutes');
 // const { default: logger } = require('eslint-config/dist/logger');
 
 // const { env } = require('process');
+
 
 
 
@@ -67,8 +66,3 @@ server.get('*', (req, res) => {
 
 // server
 
-server.listen (PORT, () => {
-  console.log(`listening on port ${PORT}`)
-  logger.info(`server listening on port ${PORT}`)
-
-})
