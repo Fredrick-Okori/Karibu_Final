@@ -1,13 +1,15 @@
 const express = require('express'),
     path = require('path'),
     mongoose = require('mongoose'),
-    passport = require('passport');
+    passport = require('passport'),
+    logger = require("./logger");
 require('dotenv').config();
+
 const User = require("./models/User");
 
 // Database
 const config = require('./config/database');
-
+const PORT = process.env.PORT || 7000;
 
 // Express Session
 const expressSession = require('express-session')({
@@ -16,7 +18,7 @@ const expressSession = require('express-session')({
     saveUninitialized: false,
 });
 
-const port = process.env.port || 5000;
+
 
 // Routes
 const stockRoutes = require("./routes/stockRoutes");
@@ -28,62 +30,28 @@ const creditRoutes = require('./routes/creditRoutes');
 const creditreport = require('./routes/creditreport');
 const salereportRoute = require('./routes/salereportRoute');
 const salesRoutes = require('./routes/salesRoutes');
+// routes are above
+// const { default: logger } = require('eslint-config/dist/logger');
+
+// const { env } = require('process');
 
 
 
 
-//Initialising server
-const server = express();
 //
 // Mongoose Set up
 //connect mongoose
 mongoose.connect(config.database, { useNewUrlParser: true });
 const db = mongoose.connection;
-
-
 // Check connection
 db.once('open', function () {
-    console.log('Connected to MongoDB');
+  console.log('Connected to MongoDB');
 });
 // Check for db errors
 db.on('error', function (err) {
-    console.error(err);
+  console.error(err);
+  logger.error(err.message)
 });
-
-// Setting view Engine.
-server.set('view engine', 'pug');
-server.set('views', './views');
-
-// Express Middleware
-server.use(express.urlencoded({ extended: true }));
-server.use(express.static(path.join(__dirname, 'public')));
-server.use(expressSession);
-
-//configuring passport middleware
-server.use(passport.initialize());
-passport.use(passport.session());
-passport.use(User.createStrategy());
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
-
-
-// Routing
-server.use('/', loginRoutes);
-server.use('/register', registerRoutes);
-server.use('/procurement', stockRoutes);
-server.use('/stockreport', stockreportRoutes);
-server.use('/credit', creditRoutes);
-server.use('/userlist', userlistroutes);
-server.use('/creditreport', creditreport);
-server.use('/salesreport', salereportRoute);
-server.use('/sales', salesRoutes);
-
-
-server.get('/nonuser', (req, res) => {
-    res.render('nonuserform')
-});
-
 
 // server.use('/edit_product', produceroutes);
 
@@ -97,6 +65,4 @@ server.get('*', (req, res) => {
 });
 
 // server
-// server.listen(5000, () => console.log('Listening on Port 5000'));
 
-app.listen(port, ()=> console.log(`Listening to Port Number ${port}`));
