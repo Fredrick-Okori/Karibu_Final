@@ -32,6 +32,7 @@ const creditRoutes = require('./routes/creditRoutes');
 const creditreport = require('./routes/creditreport');
 const salereportRoute = require('./routes/salereportRoute');
 const salesRoutes = require('./routes/salesRoutes');
+// routes are above
 // const { default: logger } = require('eslint-config/dist/logger');
 
 // const { env } = require('process');
