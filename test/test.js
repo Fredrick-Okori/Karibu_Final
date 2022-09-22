@@ -4,11 +4,11 @@ const assert = require('chai').assert;
 const price = require('../sum');
 describe('Finding total price of produce', ()=>{
 
-    it('Test 1', ()=>{
+    it('Test 1', async ()=>{
         assert.equal(price(1000, 4500),4500000);
     })
 
-    it('Test 2', ()=>{
+    it('Test 2', async  ()=>{
         assert.equal(price(1200, 2000),2400000);
     })
 });
